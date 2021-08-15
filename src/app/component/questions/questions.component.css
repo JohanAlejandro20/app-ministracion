@@ -1,0 +1,52 @@
+.filter{
+    height: 92%;
+    width: 25%;
+    float: left;
+    border-right: 1px solid #eaeaea
+}
+
+
+
+
+.filter_header {
+    width: 100%;
+    height: 50px;
+    background: #eaeaea;
+}
+
+.filter-p{
+    margin-left: 20px; 
+    padding-top: 12px; 
+    color: #000000;
+    font-weight: 700;
+}
+
+
+.filter-search {
+    height: 70px; 
+    background: #f9f9f9; 
+}
+
+
+.titel {
+    float: left;
+    width: 65%;
+    padding: 43px;
+    color: #000000;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.question {
+    float: left;
+    width: 65%;
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+
+.add-question{
+    text-align: center;
+    padding: 33px;
+    height: 120px;
+}
