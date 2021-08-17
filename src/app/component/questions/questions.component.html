@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #192e67"> 
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../../assets/images/appmin.png" alt="app-ministracion" width="200px">
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" style="color: white;" aria-current="page" href="#" >Inicio</a>
+          <a class="nav-link"        style="color: white;" href="#">Solicitudes</a>
+          <a class="nav-link"        style="color: white;" href="#">Noticias</a>
+          <a class="nav-link"        style="color: white;"  [routerLink]="['/questions']"  >Preguntas</a>
+        </div>
+      </div>
+    </div>
+</nav>
+
+  <div class="filter">
+    <div class="filter_header">
+      <p class="filter-p"> RESIDENTE / CONJUNTO  </p>
+    </div>
+    
+    <div class="filter-search">
+      <mat-form-field class="example-full-width" appearance="outline" style="margin-top: 5px; margin-left: 10px; width: 80%;">
+        <mat-label>Buscar preguntas</mat-label>
+        <input  type="text" matInput placeholder="Buscar preguntas"> 
+      </mat-form-field>
+      <button style="margin-left: 1%; margin-bottom: 10%;" mat-button> <i class="fa fa-search" aria-hidden="true"></i> </button>
+    </div>
+  </div>
+
+  <div class="titel">
+
+    <p>Preguntas Realizadas</p>
+
+  </div>
+
+  <div class="add-question">
+    <button mat-mini-fab color="primary" matTooltip="Crear pregunta">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="question">
+    <mat-card>
+      <mat-card-title>
+        Reunion el proximo 27/09/2021
+      </mat-card-title>
+
+      <mat-card-content>
+        Si la administrador tiene una fecha preestablecida no entiendo el motivo del cambio de fecha
+
+        si el cambio es debido a factores externos deberían de informarnos a nosotros los residentes acerca de dichos cambios ya sea por medio de un correo o whatsapp ya que ustedes cuentan con toda la Información para realizar la debida gestión.
+      </mat-card-content>
+
+      <mat-card-actions style="text-align: end;">
+         <button mat-button color="primary" matTooltip="Ver pregunta"> Ver </button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+
+
+
