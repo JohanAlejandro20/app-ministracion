@@ -15,13 +15,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
+import { RegisterComponent } from './component/register/register.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     QuestionsComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import {MatCardModule} from '@angular/material/card';
     FontAwesomeModule,
     MatIconModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule,
+    MatDialogModule
     
   ],
   providers: [],
