@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import {QuestionsModule} from './component/questions/questions.module'
+import { QuestionsAdminComponent } from './component/questions-admin/questions-admin.component';
 
 
 
@@ -17,10 +18,9 @@ const routes: Routes = [
     path: "questions", loadChildren: ()=>  QuestionsModule
   },
 
-  // {
-  //   path: "questions",
-  //   loadChildren: './component/questions/questions.module#QuestionsModule'
-  // },
+  {
+    path: "questions-admin", component: QuestionsAdminComponent
+  },
 
   {
     path: "register", component: RegisterComponent

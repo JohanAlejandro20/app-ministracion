@@ -17,6 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import { RegisterComponent } from './component/register/register.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
+import { QuestionsAdminComponent } from './component/questions-admin/questions-admin.component';
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
 
 
@@ -26,6 +27,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     LoginComponent,
     FooterComponent,
     RegisterComponent,
+    QuestionsAdminComponent,
   ],
   imports: [
     BrowserModule,
