@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthUserService } from 'src/app/services/auth-user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,10 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  conjuntos: any;
+  constructor(private fb: FormBuilder, private authService: AuthUserService) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.chargeAssembles();    
   }
 
 
@@ -25,8 +28,8 @@ export class RegisterComponent implements OnInit {
       email: ["",[Validators.required,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
       password:["", [Validators.required]],
       confirmPassword: ["",[Validators.required]],
-      address:["",Validators.required],
-      nit:["", [Validators.required]]
+      address:[{value:"", disabled: true},"",Validators.required],
+      nit:[{value:"", disabled: true}, [Validators.required]]
     },{
       validators: this.samePasswords('password','confirmPassword')
     })
@@ -38,6 +41,28 @@ export class RegisterComponent implements OnInit {
     console.log("Envio a la bd");
     
     
+  }
+
+  chargeAssembles(){
+    this.authService.getAssembles().subscribe(res => {
+      console.log(res);
+      this.conjuntos = res;
+    })
+  }
+
+  chargeValuesAssemble(ensemble: any){
+    // console.log(this.conjuntos.nombre);
+    if(ensemble){
+      this.conjuntos.forEach((element:any) => {
+          if(ensemble == element.cod_conjunto){
+            this.form.get("nit")?.setValue(element.nit);
+            this.form.get("address")?.setValue(element.direccion);
+          }
+      });
+    }else{
+      console.log(this.form.get("nit")?.setValue(""));
+      console.log(this.form.get("address")?.setValue(""));
+    }
   }
 
   samePasswords(password: string, confirmPassword:string){

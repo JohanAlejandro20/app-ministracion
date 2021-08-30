@@ -40,7 +40,11 @@
             <div class="col-md-5 mt-3">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Conjunto</mat-label>
-                    <input formControlName="ensemble" matInput placeholder="Conjunto">
+                    <mat-select formControlName="ensemble" (selectionChange)="chargeValuesAssemble($event.value)">
+                        <mat-option>--Ninguno-- </mat-option>
+                        <mat-option *ngFor="let conjunto of conjuntos" [value]="conjunto.cod_conjunto">{{conjunto.nombre}}</mat-option>
+                      </mat-select>
+                    <!-- <input formControlName="ensemble" matInput placeholder="Conjunto"> -->
                     <mat-error *ngIf="form.get('ensemble')?.invalid">Conjunto Invalido</mat-error>
 
                 </mat-form-field>
@@ -94,7 +98,7 @@
             <div class="col-md-5">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Nit del conjunto</mat-label>
-                    <input formControlName="nit" matInput placeholder="Correo">
+                    <input  formControlName="nit" matInput placeholder="Correo">
                     <mat-error *ngIf="form.get('nit')?.invalid">Nit invalida</mat-error>
 
                 </mat-form-field>

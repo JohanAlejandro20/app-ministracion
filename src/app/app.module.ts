@@ -18,6 +18,8 @@ import { RegisterComponent } from './component/register/register.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import { QuestionsAdminComponent } from './component/questions-admin/questions-admin.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
 
 
@@ -43,7 +45,9 @@ import { QuestionsAdminComponent } from './component/questions-admin/questions-a
     MatTooltipModule,
     MatCardModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    MatSelectModule
     
   ],
   providers: [],
