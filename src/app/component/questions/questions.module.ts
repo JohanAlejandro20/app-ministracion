@@ -14,6 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AppRoutingModule} from './questions.routing.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -33,7 +34,8 @@ import {AppRoutingModule} from './questions.routing.module';
     MatCardModule,
     MatRadioModule,
     MatDialogModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatMenuModule
   ],
   entryComponents:[AddQuestionComponent] 
 })

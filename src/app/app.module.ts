@@ -20,6 +20,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { QuestionsAdminComponent } from './component/questions-admin/questions-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
+
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
 
 
@@ -47,7 +49,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatRadioModule,
     MatDialogModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
     
   ],
   providers: [],

@@ -8,7 +8,7 @@
 
 
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit(formDirective)" #formDirective="ngForm">
         <div class="row text-center mt-5">
             <div class="col-md-12" style="font-size: 22px;">
                 <p style="color: #192e67;">Registro</p>
@@ -24,9 +24,9 @@
         <div class="raw row justify-content-md-center mt-5">
 
 
-            <mat-radio-group formControlName="options">
-                <mat-radio-button value="1" style="margin-left: 270px;">Administrador</mat-radio-button>
-                <mat-radio-button value="2" style="margin-left: 470px;">Residente</mat-radio-button>
+            <mat-radio-group  formControlName="options">
+                <mat-radio-button  value = '1' style="margin-left: 270px;">Administrador</mat-radio-button>
+                <mat-radio-button  value = '2' style="margin-left: 470px;">Residente</mat-radio-button>
             </mat-radio-group>
 
             <div class="col-md-5 mt-3">
@@ -71,7 +71,7 @@
             <div class="col-md-5">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Contraseña</mat-label>
-                    <input formControlName="password" type="password" matInput placeholder="Correo">
+                    <input formControlName="password" type="password" matInput placeholder="Contraseña">
                     <mat-error *ngIf="form.get('password')?.invalid">Contraseña Invalida</mat-error>
 
                 </mat-form-field>
@@ -80,7 +80,7 @@
             <div class="col-md-5">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Confirmar contraseña</mat-label>
-                    <input formControlName="confirmPassword" type="password" matInput placeholder="Correo">
+                    <input formControlName="confirmPassword" type="password" matInput placeholder="Confirmar contraseña">
                     <mat-error *ngIf="form.get('confirmPassword')?.invalid">Las contraseñas no coinciden</mat-error>
 
                 </mat-form-field>
@@ -104,9 +104,11 @@
                 </mat-form-field>
             </div>
 
-            <div class="col-md-12 text-center mt-5">
+            <div class="col-md-3 text-center mt-5">
                 <button mat-raised-button color="primary" [disabled] ="form.invalid">Registrarse</button>
+                <p class="mt-2"> ya tienes cuenta Ingresa <a href="/login"> aqui </a> </p>
             </div>
+
         </div>
     </form>
 </div>
