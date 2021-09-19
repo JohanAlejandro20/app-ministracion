@@ -15,6 +15,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AppRoutingModule} from './questions.routing.module';
 import {MatMenuModule} from '@angular/material/menu';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 
@@ -35,7 +36,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatRadioModule,
     MatDialogModule,
     AppRoutingModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxPaginationModule
   ],
   entryComponents:[AddQuestionComponent] 
 })

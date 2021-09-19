@@ -4,44 +4,25 @@
             <div class="col-md-12">
             <p class="titel"> Realizar pregunta </p>
         </div>
-        <div class="col-md-12 mt-3">
+        <div class="col-md-6 mt-4">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Conjunto</mat-label>
                 <input formControlName="ensemble" matInput placeholder="conjunto" value="">
             </mat-form-field>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-4">
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Nombre</mat-label>
-                <input formControlName="name" matInput placeholder="Nommbre" value="">
-            </mat-form-field>
-        </div>
-        
-        <div class="col-md-6">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Apellido</mat-label>
-                <input formControlName="lastName" matInput placeholder="Apellido" value="">
-            </mat-form-field>
-        </div>
-        
-        <div class="col-md-6">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Email</mat-label>
-                <input formControlName="email"  matInput placeholder="Email" value="">
-            </mat-form-field>
-        </div>
-        
-        <div class="col-md-6">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Telefono</mat-label>
-                <input  formControlName="phone" matInput placeholder="Telefono" value="">
+                <mat-label>Nombre de la pregunta</mat-label>
+                <input formControlName="name" matInput placeholder="Nombre" value="">
+                <mat-error *ngIf="form.get('name')?.invalid">Nombre Invalido</mat-error>
             </mat-form-field>
         </div>
         
         <div class="col-md-12">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Escribe tu pregunta</mat-label>
-                <textarea  formControlName="question" matInput placeholder="pregunta...."></textarea>
+                <textarea cols="60" rows="6" formControlName="question" matInput placeholder="pregunta...."></textarea>
+                <mat-error *ngIf="form.get('question')?.invalid">Pregunta Invalida</mat-error>
             </mat-form-field>
         </div>
         

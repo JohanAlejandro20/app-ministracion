@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
       nombre: this.form.get("name")?.value,
       telefono: this.form.get("phone")?.value,
       cod_conjunto: this.form.get("ensemble")?.value,
-      cod_rol: parseInt(this.form.get("options")?.value) 
+      cod_rol: parseInt(this.form.get("options")?.value)  
     }
 
     this.authService.registerUser(request).subscribe((res: any) =>{

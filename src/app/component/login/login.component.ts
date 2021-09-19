@@ -72,8 +72,6 @@ export class LoginComponent implements OnInit {
       
       let usuario = this.authService.usuario;
       let token = this.authService.token;
-      console.log(usuario);
-      console.log(token);
       
       console.log(usuario.roles[0]);
       
@@ -87,6 +85,9 @@ export class LoginComponent implements OnInit {
       Swal.fire('Login',`Hola ${this.authService.usuario.nombre} has iniciado sesion con exito` , 'success')
       
     },error => {
+
+      Swal.fire('Error Login', "Error al registrar el usuario", 'error')
+
       if(error.status == 400){
         Swal.fire('Error Login', "Usuario o clave incorrecta!! ", 'error')
       }

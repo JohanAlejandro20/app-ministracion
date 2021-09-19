@@ -1,7 +1,7 @@
 .filter{
     width: 25%;
     float: left;
-    height: 200mm; 
+    height: 230mm; 
     border-right: 1px solid #eaeaea
 }
 
@@ -40,13 +40,29 @@
 .question {
     float: left;
     width: 65%;
-    height: 20%;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.no-question{
+    float: left;
+    width: 65%;
     margin-left: 20px;
     margin-top: 20px;
+    
 }
 
 .add-question{
     text-align: center;
     padding: 33px;
     height: 120px;
+}
+
+.text-limit{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    
+    
 }

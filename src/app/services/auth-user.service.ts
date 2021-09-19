@@ -84,7 +84,6 @@ export class AuthUserService {
   }
 
   public getDataToken(access_token: any): any {
-    console.log("get-token",access_token);
     
     if(access_token!= null){
       return JSON.parse(atob(access_token.split('.')['1']));
