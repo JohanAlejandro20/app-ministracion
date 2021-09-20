@@ -55,11 +55,12 @@
     Usted no ha realizado ninguna pregunta
   </div>
 
-  <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 4, currentPage: page }">
+  <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 3, currentPage: page }">
     <mat-card style="background: #eaeaea;">
-      <mat-card-title>
+      <mat-card-title style="color: #4169e1;">
         {{question.nombre}}
       </mat-card-title>
+      <hr>
 
       <mat-card-content>
         <p class="text-limit mt-3"> 
