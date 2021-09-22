@@ -27,7 +27,7 @@
 
   <div class="filter">
     <div class="filter_header">
-      <p class="filter-p"> RESIDENTE / CONJUNTO  </p>
+      <p class="filter-p"> RESIDENTE / {{ensemble | uppercase}}    </p>
     </div>
     
     <div class="filter-search">
@@ -50,25 +50,41 @@
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </div>
+  
+  <div class="alert alert-primary no-question" role="alert" *ngIf="validateQuestions">
+    Usted no ha realizado ninguna pregunta
+  </div>
 
-  <div class="question">
-    <mat-card>
-      <mat-card-title>
-        Reunion el proximo 27/09/2021
-      </mat-card-title>
+  <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 3, currentPage: page }">
+    <mat-card style="box-shadow: 2px 2px 2px 2px #D3D3D3;">
+      <mat-card-header style="border-bottom: 10px solid #D3D3D3; border-bottom-width: 1px;">
+        <mat-card-title>
+          {{question.nombre}}
+        </mat-card-title>
+      </mat-card-header>
 
-      <mat-card-content>
-        Si la administrador tiene una fecha preestablecida no entiendo el motivo del cambio de fecha
-
-        si el cambio es debido a factores externos deberían de informarnos a nosotros los residentes acerca de dichos cambios ya sea por medio de un correo o whatsapp ya que ustedes cuentan con toda la Información para realizar la debida gestión.
+      <mat-card-content  >
+        <p class="text-limit mt-2"> 
+          {{question.descripcion}}
+        </p> 
       </mat-card-content>
 
       <mat-card-actions style="text-align: end;">
-         <button mat-button color="primary" matTooltip="Ver pregunta"> Ver </button>
+         <button mat-button color="primary" matTooltip="Ver pregunta"> Ver  </button>
       </mat-card-actions>
 
     </mat-card>
   </div>
+  <div class="mt-3" style="float: left;" *ngIf="!validateQuestions">
+    <pagination-controls (pageChange)="page = $event" 
+      previousLabel="Anterior"
+      nextLabel="Siguiente">
+    </pagination-controls>
+
+  </div>
+
+
+
 
 
 

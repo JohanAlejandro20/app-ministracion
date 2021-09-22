@@ -4,6 +4,8 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import {QuestionsModule} from './component/questions/questions.module'
 import { QuestionsAdminComponent } from './component/questions-admin/questions-admin.component';
+import { AdminGuard } from './guard/admin.guard';
+import { ResidentGuard } from './guard/resident.guard';
 
 
 
@@ -15,11 +17,13 @@ const routes: Routes = [
   },
   
   {
-    path: "questions", loadChildren: ()=>  QuestionsModule
+    path: "questions", loadChildren: ()=>  QuestionsModule,
+    canActivate: [ResidentGuard]
   },
 
   {
-    path: "questions-admin", component: QuestionsAdminComponent
+    path: "questions-admin", component: QuestionsAdminComponent,
+    canActivate: [AdminGuard]
   },
 
   {

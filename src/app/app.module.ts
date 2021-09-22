@@ -21,6 +21,7 @@ import { QuestionsAdminComponent } from './component/questions-admin/questions-a
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
 
@@ -50,7 +51,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDialogModule,
     HttpClientModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxPaginationModule
     
   ],
   providers: [],

@@ -1,6 +1,6 @@
 .example-full-width {
     width: 100%;
-    margin: 0 !important;
+    /* margin: 0 !important; */
 }
 
 .example-card {
@@ -11,3 +11,10 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
 }
+
+.abs-center {
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    /* min-height: 100vh; */
+  }
