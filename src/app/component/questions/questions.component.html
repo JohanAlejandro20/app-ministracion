@@ -56,20 +56,21 @@
   </div>
 
   <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 3, currentPage: page }">
-    <mat-card style="background: #eaeaea;">
-      <mat-card-title style="color: #4169e1;">
-        {{question.nombre}}
-      </mat-card-title>
-      <hr>
+    <mat-card style="box-shadow: 2px 2px 2px 2px #D3D3D3;">
+      <mat-card-header style="border-bottom: 10px solid #D3D3D3; border-bottom-width: 1px;">
+        <mat-card-title>
+          {{question.nombre}}
+        </mat-card-title>
+      </mat-card-header>
 
-      <mat-card-content>
-        <p class="text-limit mt-3"> 
+      <mat-card-content  >
+        <p class="text-limit mt-2"> 
           {{question.descripcion}}
         </p> 
       </mat-card-content>
 
       <mat-card-actions style="text-align: end;">
-         <button mat-button color="primary" matTooltip="Ver pregunta"> Ver </button>
+         <button mat-button color="primary" matTooltip="Ver pregunta"> Ver  </button>
       </mat-card-actions>
 
     </mat-card>

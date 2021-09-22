@@ -116,7 +116,10 @@ export class QuestionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result =>{
       if(result){
-        this.consultQuestions();
+        console.log("si entre");
+        setTimeout(() => {
+          this.consultQuestions();
+        }, 200);
       }
       
     })

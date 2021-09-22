@@ -35,7 +35,11 @@
     color: #000000;
     font-weight: 200;
     font-size: 20px;
+    padding: 32px;
+    font-size: 20px;
+    color: #777777;
 }
+
 
 .question {
     float: left;
