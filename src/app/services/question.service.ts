@@ -57,4 +57,20 @@ export class QuestionService {
 
   }
 
+  getQuestionByensemble(token: any, id_ensemble:any){
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    const url = `${environment.apiUrl}/api/buscar-preguntas-usuario-conjunto?id=${id_ensemble}`
+
+    console.log(url);
+    
+
+    return this.http.get(url,{headers:httpHeaders})
+
+  }
+
 }

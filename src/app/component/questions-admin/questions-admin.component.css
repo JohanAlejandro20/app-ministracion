@@ -18,3 +18,13 @@
     justify-content: center;
     /* min-height: 100vh; */
   }
+
+
+.filter-p{
+    margin-left: 20px; 
+    /* padding-top: 12px;  */
+    color: #000000;
+    font-weight: 700;
+}
+
+

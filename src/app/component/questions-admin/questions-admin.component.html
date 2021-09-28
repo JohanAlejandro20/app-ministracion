@@ -24,37 +24,38 @@
     </div>
 </nav>
 
-
-<div class="container">
-    <div class="row abs-center">
-        <div class="col-md-12 mt-5">
+<div class="container"  >
+    <div class="row">
+        <div class="col-md-12 mt-4">
+          
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Filtrar</mat-label>
+                <mat-label>Filtrar por coincidencia</mat-label>
                 <input  matInput 
                        placeholder="Buscar coincidencia">
               </mat-form-field>
             </div>
+            <p class="filter-p"> ADMINISTRADOR / {{ensemble | uppercase}}   </p>
             <!-- <div class="col-md-2 " style="justify-content: left; margin-top: 60px;">
               <button mat-button  color="primary">  Filtrar</button>
             </div> -->
-        <div class="col-md-6" >
+        <div class="col-md-6 mt-2" *ngFor="let question of questions">
             <mat-card class="example-card">
                 <mat-card-header>
-                    <mat-card-title>Johan Neira</mat-card-title>
+                    <mat-card-title>{{question.nombre_usuario}}</mat-card-title>
                     <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
                     <div mat-card-avatar class="example-header-image"></div>
                 </mat-card-header>
 
                 <mat-card-content class="mt-3">
                   <p>
-                    Conjunto: Alamos
+                    Conjunto: {{question.nombre_conjunto}}
                   </p>
                   <p>
-                    Pregunta: Si el administrador tiene una fecha preestablecida no entiendo el ktivo del cambio 
+                    Pregunta: {{question.descripcion_pregunta}} 
                   </p>
 
                   <p>
-                      Fecha de creacion: 2021/06/09
+                      Fecha de creacion: {{question.fecha_creacion_pregunta}}
                   </p>
                 </mat-card-content>
                 <mat-card-actions style="text-align: end;">
@@ -62,33 +63,5 @@
                 </mat-card-actions>
               </mat-card>
         </div>
-
-
-        <div class="col-md-6">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-title>Johan Neira</mat-card-title>
-                    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-                    <div mat-card-avatar class="example-header-image"></div>
-                </mat-card-header>
-
-                <mat-card-content class="mt-3">
-                  <p>
-                    Conjunto: Alamos
-                  </p>
-                  <p>
-                    Pregunta: Si el administrador tiene una fecha preestablecida no entiendo el ktivo del cambio 
-                  </p>
-
-                  <p>
-                      Fecha de creacion: 2021/06/09
-                  </p>
-                </mat-card-content>
-                <mat-card-actions style="text-align: end;">
-                  <button color="primary" mat-button>Responder</button>
-                </mat-card-actions>
-              </mat-card>
-        </div>
-
     </div>
 </div>
