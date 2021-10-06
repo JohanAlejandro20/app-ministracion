@@ -21,7 +21,8 @@ import { QuestionsAdminComponent } from './component/questions-admin/questions-a
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
-import {NgxPaginationModule} from 'ngx-pagination'
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ResponsesComponent } from './component/responses/responses.component'
 
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
 
@@ -33,6 +34,7 @@ import {NgxPaginationModule} from 'ngx-pagination'
     FooterComponent,
     RegisterComponent,
     QuestionsAdminComponent,
+    ResponsesComponent,
   ],
   imports: [
     BrowserModule,

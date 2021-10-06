@@ -19,6 +19,8 @@ export class QuestionsAdminComponent implements OnInit {
   username!: string
   cod_conjunto: any
   questions: any;
+  validateResponse = true;
+  public page: number = 1;
 
   ngOnInit(): void {
     this.username= this.authService.usuario.nombre;
@@ -39,7 +41,7 @@ export class QuestionsAdminComponent implements OnInit {
         this.questions = res;
         
         if(this.questions.length>0){
-          // this.validateQuestions = false;
+          this.validateResponse = false;
         }
 
         
@@ -101,5 +103,16 @@ export class QuestionsAdminComponent implements OnInit {
     Swal.fire('Logout',`Hola ${this.authService.usuario.nombre} has cerrado sesion con exito` , 'success')
     this.router.navigate(["/login"])
 
+  }
+
+  response(id_pregunta: any){
+    console.log(id_pregunta);
+    this.router.navigate([`response-questions/${id_pregunta}`])
+    
+  }
+
+  viewResponse(){
+    console.log("Holi");
+    
   }
 }

@@ -6,6 +6,7 @@ import {QuestionsModule} from './component/questions/questions.module'
 import { QuestionsAdminComponent } from './component/questions-admin/questions-admin.component';
 import { AdminGuard } from './guard/admin.guard';
 import { ResidentGuard } from './guard/resident.guard';
+import { ResponsesComponent } from './component/responses/responses.component';
 
 
 
@@ -28,6 +29,11 @@ const routes: Routes = [
 
   {
     path: "register", component: RegisterComponent
+  },
+  {
+    path: "response-questions/:id_pregunta", component: ResponsesComponent,
+    canActivate: [AdminGuard]
+    
   }
 
 ];
