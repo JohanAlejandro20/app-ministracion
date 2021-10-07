@@ -24,7 +24,10 @@
     </div>
 </nav>
 
-<div class="container"  >
+  
+
+
+<div class="container">
     <div class="row">
         <div class="col-md-12 mt-4">
           
@@ -35,11 +38,18 @@
               </mat-form-field>
             </div>
             <p class="filter-p"> ADMINISTRADOR / {{ensemble | uppercase}}   </p>
+            <p class="filter-p"> PREGUNTAS REALIZADAS:   </p>
+
             <!-- <div class="col-md-2 " style="justify-content: left; margin-top: 60px;">
               <button mat-button  color="primary">  Filtrar</button>
             </div> -->
-        <div class="col-md-6 mt-2" *ngFor="let question of questions">
-            <mat-card class="example-card">
+
+            <div class="alert alert-primary no-question" role="alert" *ngIf="validateResponse">
+              No hay ninguna pregunta  :(
+            </div>
+
+        <div class="col-md-6 mt-2" *ngFor="let question of questions | paginate: { itemsPerPage: 4, currentPage: page }">
+            <mat-card class="example-card" style="box-shadow: 2px 2px 2px 3px #D3D3D3;">
                 <mat-card-header>
                     <mat-card-title>{{question.nombre_usuario}}</mat-card-title>
                     <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
@@ -50,7 +60,7 @@
                   <p>
                     Conjunto: {{question.nombre_conjunto}}
                   </p>
-                  <p>
+                  <p class="text-limit">
                     Pregunta: {{question.descripcion_pregunta}} 
                   </p>
 
@@ -58,10 +68,23 @@
                       Fecha de creacion: {{question.fecha_creacion_pregunta}}
                   </p>
                 </mat-card-content>
-                <mat-card-actions style="text-align: end;">
-                  <button color="primary" mat-button>Responder</button>
+                <mat-card-actions style="text-align: end;" *ngIf ="question.codigo_respuesta == null">
+                  <button (click) = "response(question.codigo_pregunta)" color="primary" mat-button>Responder</button>
                 </mat-card-actions>
+
+                <mat-card-actions style="text-align: end;" *ngIf ="question.codigo_respuesta">
+                  <button (click) = "viewResponse()" color="primary" mat-button>Ver registro</button>
+                </mat-card-actions>
+
               </mat-card>
+
+        </div>
+        <div class="mt-3" style="float: left;" *ngIf="!validateResponse">
+          <pagination-controls (pageChange)="page = $event" 
+            previousLabel="Anterior"
+            nextLabel="Siguiente">
+          </pagination-controls>
+      
         </div>
     </div>
 </div>
