@@ -111,8 +111,10 @@ export class QuestionsAdminComponent implements OnInit {
     
   }
 
-  viewResponse(){
-    console.log("Holi");
+  viewResponse(codigo_pregunta: any){
+    console.log(codigo_pregunta);
     
+    
+    this.router.navigate([`view-response/${codigo_pregunta}`])
   }
 }

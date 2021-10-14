@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #192e67">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../../assets/images/appmin.png" alt="app-ministracion" width="200px">
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" style="color: white;" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link" style="color: white;" href="#">Solicitudes</a>
+                <a class="nav-link" style="color: white;" href="#">Noticias</a>
+            </div>
+        </div>
+
+        <div>
+            <button mat-button [matMenuTriggerFor]="menu" style="color: white;"> <i class="fa fa-user"
+                    style="color: white;"> {{username}} </i></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">Cerrar sesion</button>
+            </mat-menu>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-1">
+            <img src="../../../assets/images/usuario.png" alt="user" width="50px">
+        </div>
+        <div class="col-md-11" style="font-size: 24px; margin-top: 20px;">
+            <p>{{user_data.nombre_usuario }}</p>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-2">
+                Nombre: {{user_data.nombre_usuario }}
+            </div>
+
+            <div class="col-md-2">
+                Telefono: {{user_data.telefono_usuario }}
+            </div>
+
+            <div class="col-md-2">
+                Conjunto: {{user_data.nombre_conjunto }}
+            </div>
+
+            <div class="col-md-2">
+                Rol: Residente
+            </div>
+
+            <div class="col-md-2">
+                Email: {{user_data.correo_usuario}}
+            </div>
+
+            <div class="col-md-2" style="color: green;" *ngIf="validateResponse">
+                Pregunta cerrada:
+            </div>
+
+
+            <div class="col-md-2" style="color: brown;" *ngIf="!validateResponse">
+                Pregunta: sin responder
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12" style="border: #eaeaea 1px solid;">
+                <p>
+                    {{user_data.descripcion_pregunta}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="validateResponse">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <p>Respondida por: </p>
+            </div>
+            <div class="col-md-1">
+                <img src="../../../assets/images/usuario.png" alt="user" width="50px">
+            </div>
+            <div class="col-md-11" style="font-size: 24px; margin-top: 20px;">
+                <p>{{response_data.nombre_usuario}}</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12" style="border: #eaeaea 1px solid;">
+                <p>
+                    {{response_data.descripcion_respuesta}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="!validateResponse" class="alert alert-primary mt-5" role="alert">
+        Ups! no hemos encontrado respuesta para esta pregunta
+     </div>
+
+     <div class="row mt-3">
+        <div class="col-md-12">
+            <button type="button" mat-raised-button color="primary" (click) ="backTo()"> <i class="fa fa-arrow-left"></i>
+                Volver
+            </button>
+        </div>
+    </div>
+
+
+</div>

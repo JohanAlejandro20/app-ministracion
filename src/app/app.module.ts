@@ -22,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { ResponsesComponent } from './component/responses/responses.component'
+import { ResponsesComponent } from './component/responses/responses.component';
+import { ViewResponseComponent } from './component/view-response/view-response.component'
 
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
 
@@ -35,6 +36,7 @@ import { ResponsesComponent } from './component/responses/responses.component'
     RegisterComponent,
     QuestionsAdminComponent,
     ResponsesComponent,
+    ViewResponseComponent,
   ],
   imports: [
     BrowserModule,

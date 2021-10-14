@@ -73,7 +73,7 @@
                 </mat-card-actions>
 
                 <mat-card-actions style="text-align: end;" *ngIf ="question.codigo_respuesta">
-                  <button (click) = "viewResponse()" color="primary" mat-button>Ver registro</button>
+                  <button (click) = "viewResponse(question.codigo_pregunta)" color="primary" mat-button>Ver registro</button>
                 </mat-card-actions>
 
               </mat-card>

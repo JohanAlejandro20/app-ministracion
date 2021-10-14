@@ -125,4 +125,13 @@ export class QuestionsComponent implements OnInit {
     })
   }
 
+  viewResponse(id_pregunta: any){  
+
+    console.log(id_pregunta);
+    
+    
+    this.router.navigate([`view-response/${id_pregunta}`])
+
+  }
+
 }
