@@ -4,13 +4,14 @@ import { environment } from '../../environments/environment';
 import {map} from  'rxjs/operators'
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AuthUserService } from './auth-user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthUserService) { }
 
 
   getQuestionsByUser(token: any, id_user: any) {
@@ -102,10 +103,20 @@ export class QuestionService {
 
     return this.http.get(url,{headers:httpHeaders}).pipe( map( (data: any) =>{
 
+      console.log(data);
+
       if(data.error){
         Swal.fire('Preguta', `Lo sentimos ${data.Mensaje}`, 'info')
-        this.router.navigate(['/questions-admin'])
-      }
+        let role = this.authService.usuario.roles;
+
+        if(role[0] == "ROLE_ADMINISTRADOR"){
+          console.log("entre");          
+          this.router.navigate(['/questions-admin'])
+        }else{
+          this.router.navigate(['/questions'])
+
+        }
+    }
 
       console.log("holanda");
       
@@ -118,7 +129,6 @@ export class QuestionService {
         request.telefono_usuario = data.usuario.telefono
         request.correo_usuario = data.usuario.correo
         request.nombre_conjunto = data.usuario.conjunto.nombre
-        // request2.nombre.rol= data.usuario.roles
 
         return request;
        
@@ -139,6 +149,22 @@ export class QuestionService {
 
     return this.http.post(url, request, {headers:httpHeaders})
 
+
+  }
+
+  public getResponseQuestionByIdQuestion(id_question: any,token: any,){
+
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    const url = `${environment.apiUrl}/api/buscar-respuesta-by-id-pregunta?id=${id_question}`
+
+    console.log(url);
+
+    return this.http.get(url,{headers:httpHeaders})
 
   }
 

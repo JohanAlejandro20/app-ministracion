@@ -7,6 +7,8 @@ import { QuestionsAdminComponent } from './component/questions-admin/questions-a
 import { AdminGuard } from './guard/admin.guard';
 import { ResidentGuard } from './guard/resident.guard';
 import { ResponsesComponent } from './component/responses/responses.component';
+import { ViewResponseComponent } from './component/view-response/view-response.component';
+import { AdminResidentGuard } from './guard/admin-resident.guard';
 
 
 
@@ -33,6 +35,11 @@ const routes: Routes = [
   {
     path: "response-questions/:id_pregunta", component: ResponsesComponent,
     canActivate: [AdminGuard]
+    
+  },
+  {
+    path: "view-response/:id_pregunta", component: ViewResponseComponent,
+    canActivate: [AdminResidentGuard]
     
   }
 

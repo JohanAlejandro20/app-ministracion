@@ -18,6 +18,7 @@ export class ResponsesComponent implements OnInit {
 
 
   id_pregunta: any;
+  id_usuario: any
   token : any
   username!: string;
   form!: FormGroup;
@@ -36,6 +37,8 @@ export class ResponsesComponent implements OnInit {
     console.log(this.id_pregunta);
     this.token = this.authService.token;
     this.username= this.authService.usuario.nombre;
+    this.id_usuario= this.authService.usuario.id;
+
     this.consultQuestion();
     this.createForm();
     
@@ -112,7 +115,8 @@ export class ResponsesComponent implements OnInit {
     console.log("hola");
     
     const request = {
-      cod_pregunta: parseInt(this.id_pregunta)  ,
+      cod_pregunta: parseInt(this.id_pregunta) ,
+      cod_usuario: this.id_usuario,
       descripcion: this.form.get("description_response")?.value
     }
     console.log(request);
