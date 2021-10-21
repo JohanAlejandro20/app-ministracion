@@ -32,21 +32,42 @@
     
     <div class="filter-search">
       <mat-form-field class="example-full-width" appearance="outline" style="margin-top: 5px; margin-left: 10px; width: 80%;">
-        <mat-label>Buscar preguntas</mat-label>
+        <mat-label>Buscar preguntas por incidencia </mat-label>
         <input  type="text" matInput placeholder="Buscar preguntas"> 
       </mat-form-field>
       <button style="margin-left: 1%; margin-bottom: 10%;" mat-button> <i class="fa fa-search" aria-hidden="true"></i> </button>
     </div>
+
+    <div class="filter-questions">
+      <div class="row">
+        <div  class="col-md-6" style="margin-left: 10px;">
+          <mat-form-field  class="example-full-width" appearance="outline">
+            <mat-label>Filtrar Preguntas</mat-label>
+            <mat-select (selectionChange)="selectFilter($event.value)" >
+              
+              <mat-option *ngFor="let filter of filter_values" [value]="filter.id">
+                {{filter.name}}
+              </mat-option>
+              
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 mt-2">
+        <button  mat-raised-button color="primary" matTooltip="Filtrar Pregunta">Buscar </button>
+      </div>
+    </div>
   </div>
-
-  <div class="titel">
-
-    <p>Preguntas Realizadas</p>
-
+    
   </div>
-
-  <div class="add-question">
-    <button mat-mini-fab color="primary" matTooltip="Crear pregunta" (click)="openDialog()" >
+  
+    <div class="titel">
+      
+      <p>Preguntas Realizadas</p>
+      
+    </div>
+    
+    <div class="add-question">
+      <button mat-mini-fab color="primary" matTooltip="Crear pregunta" (click)="openDialog()" >
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </div>

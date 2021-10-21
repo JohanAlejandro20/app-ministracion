@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {map} from  'rxjs/operators'
 import Swal from 'sweetalert2';
@@ -167,5 +167,27 @@ export class QuestionService {
     return this.http.get(url,{headers:httpHeaders})
 
   }
+
+
+  getFilterQuestions(token: any, id_user: any, is_response: boolean) {
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    const params = new HttpParams()
+      .set('id_usuario', id_user)
+      .set('is_response', is_response);
+
+    const url = `${environment.apiUrl}/api/filtrar-pregunta-usuario-by-respuesta`
+
+    console.log(url);
+    
+
+    return this.http.get(url,{headers:httpHeaders, params})
+
+  }
+
 
 }

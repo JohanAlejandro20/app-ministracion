@@ -1,0 +1,61 @@
+p {FONT-SIZE: 10pt; COLOR: #226622; FONT-FAMILY: verdana; TEXT-ALIGN: justify}
+
+a {color:#0000CC; FONT-FAMILY: verdana;}
+
+a:hover {COLOR:#009900; FONT-WEIGHT: bold;}
+
+h1 {TEXT-ALIGN:center; FONT-WEIGHT: bold; WIDTH: 100%; COLOR: navy;}
+
+h2 {TEXT-ALIGN:center; FONT-WEIGHT: bold; WIDTH: 100%; COLOR: navy;}
+
+h3 {FONT-FAMILY: verdana; TEXT-ALIGN:center; COLOR: navy; font-size:12pt}	
+
+td,div {FONT-SIZE: 10pt; FONT-FAMILY: verdana; }
+
+label {width: 130px; float:left; padding:2px; margin:2px; text-align:center}
+
+input {margin:2px; font-family: Verdana; font-size: 12px; width:150px; }
+
+select {margin:2px; font-family: Verdana; font-size: 12px; width:155px; }
+
+textarea {margin:2px; font-family: Verdana; font-size: 12px; width:310px;}
+
+fieldset{width:320px; padding:0px; margin:0px; display:block; border:0 }
+
+body {background-color: #ffffff; margin-top: 0px;}
+
+/*Tabla general*/
+.tabla {width:100%;}
+.menu {font-size:xx-small; vertical-align:top; width:150px; font-weight:bold}
+.tablaConsulta{width:760px;}
+.error {text-align:center; color:#FF0000; font-weight:bold}
+.filaAgregada{width:300px;text-align:left}
+.checkbox {width:15px;}
+.calendario {width:30px;}
+.estado {width:80px;}
+.comboLista {width: 300px;}
+.aceptado {color: green;}
+.rechazado {color: red;}
+.rojo {color: red;}
+.ancho400 {width: 400px;}
+.ancho40 {width: 40px;}
+.ancho50 {width: 50px;}
+.letraVertical {-moz-transform: rotate(-90deg); -webkit-transform: rotate(-90deg); filter: flipv() fliph(); writing-mode: tb-rl; text-align: center;}
+
+/*Filas consultas*/
+.impar {background-color: #E5E5E5;}
+.par {background-color: #D5D5D5;}
+.titulo {background-color: #C5C5C5;}
+.verde {background-color: #CCFFCC;}
+.naranja {background-color:#FFCC99;}
+
+/*Noticias*/
+.noticiaFecha {font-family:verdana; font-size:x-small; color:#999999}
+.noticiaHora {font-size:xx-small;}
+.noticiaTexto {font-family:verdana; font-size:small; color:#333333; position:relative; left:20px;}
+
+/*Etiquetas de informacion*/
+.derechos {text-align:center; FONT-FAMILY: verdana; font-size:xx-small; color:#999999; }
+.direccion {text-align:center; FONT-FAMILY: verdana; font-size:x-small;}
+.resumen {background-color:white; width:auto; height:0; position:absolute; top:100px;}
+
