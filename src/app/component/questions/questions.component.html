@@ -33,12 +33,11 @@
     <div class="filter-search">
       <mat-form-field class="example-full-width" appearance="outline" style="margin-top: 5px; margin-left: 10px; width: 80%;">
         <mat-label>Buscar preguntas por incidencia </mat-label>
-        <input  type="text" matInput placeholder="Buscar preguntas"> 
+        <input  type="text" [(ngModel)]="filter"  (input)="searchQuestions()" matInput placeholder="Buscar preguntas"> 
       </mat-form-field>
-      <button style="margin-left: 1%; margin-bottom: 10%;" mat-button> <i class="fa fa-search" aria-hidden="true"></i> </button>
     </div>
 
-    <div class="filter-questions">
+    <div class="filter-questions" >
       <div class="row">
         <div  class="col-md-6" style="margin-left: 10px;">
           <mat-form-field  class="example-full-width" appearance="outline">
@@ -52,8 +51,11 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-md-4 mt-2">
-        <button  mat-raised-button color="primary" matTooltip="Filtrar Pregunta">Buscar </button>
+        <div class="col-md-4 mt-2" *ngIf="!loading">
+        <button  mat-raised-button color="primary" matTooltip="Filtrar Pregunta" (click) = "searchQuestions()" >Buscar  </button>
+      </div>
+      <div class="col-md-4 mt-2" *ngIf="loading">
+        <button  mat-raised-button color="primary" matTooltip="Filtrar Pregunta" disabled >Buscando  <i class="fa fa-spinner fa-spin"></i>  </button>
       </div>
     </div>
   </div>
@@ -62,7 +64,7 @@
   
     <div class="titel">
       
-      <p>Preguntas Realizadas</p>
+      <p>Preguntas Realizadas/{{questionMessage}}</p>
       
     </div>
     
@@ -74,6 +76,10 @@
   
   <div class="alert alert-primary no-question" role="alert" *ngIf="validateQuestions">
     Usted no ha realizado ninguna pregunta
+  </div>
+
+  <div class="alert alert-primary no-question" role="alert" *ngIf="filterQuestions && !validateQuestions">
+    No se encontro ningun resultado
   </div>
 
   <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 3, currentPage: page }">

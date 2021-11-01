@@ -19,10 +19,15 @@ export class QuestionsComponent implements OnInit {
   validateQuestions = true;
   id_user: any;
   ensemble : any;
+  loading = true;
+  filterQuestions = false;
+  questionMessage = "";
+  is_response = 1;
+  filter = "";
 
    filter_values = [
     {id: 1, name:'Todas'},
-    {id: 2, name:'Respodidas'},
+    {id: 2, name:'Respondidas'},
     {id: 3, name:'Sin responder'},
 ];
 
@@ -82,15 +87,17 @@ export class QuestionsComponent implements OnInit {
 
   consultQuestions() {
 
-    this.questionService.getQuestionsByUser(this.token, this.id_user).subscribe((res: any) => {
+    this.questionService.getQuestionsByUser(this.token, this.id_user, this.is_response,  this.filter).subscribe((res: any) => {
+      this.loading = false;
       if (!res.error) {
         this.questions = res;
         
         if(this.questions.length>0){
           this.validateQuestions = false;
-        }else{
-          this.validateQuestions = true;
+          this.filterQuestions = false;
 
+        }else{
+          this.filterQuestions = true;
         }
 
         
@@ -147,54 +154,17 @@ export class QuestionsComponent implements OnInit {
 
   selectFilter(value: any){
     
+    this.questionMessage = this.filter_values[value-1].name;
+    console.log(value);
     
-    if(value==1){
-      this.consultQuestions();
-    }else{
-      let is_response = value == 2 ? true : false;
-      this.filterQuestuions(is_response);
+   this.is_response = value;
 
-    }
+   this.consultQuestions();
 
   }
 
-  filterQuestuions(value: boolean){
-
-    console.log(value);
-    
-
-    this.questionService.getFilterQuestions(this.token, this.id_user,value).subscribe((res: any) => {
-      if (!res.error) {
-        this.questions = res;
-        
-        if(this.questions.length>0){
-          this.validateQuestions = false;
-        }else{
-          this.validateQuestions = true;
-        }
-        
-      }
-    }, error => {
-      console.log(error);
-
-      if (error.status == 401) {
-        if (this.authService.isAuthenticated()) {
-          Swal.fire('Logout', `Hola ${this.authService.usuario.nombre} el token de autenticacion ah expirado`, 'info')
-          this.authService.logout();
-          this.router.navigate(['/login']);
-        }
-      }
-
-      if (error.status == 403) {
-        Swal.fire('Acceso denegado', `Hola ${this.authService.usuario.nombre} usted no tiene permisos para realizar esta operacion`, 'info')
-        this.authService.logout();
-        this.router.navigate(['/login']);
-      }
-
-    })
-
-
-
+  searchQuestions(){
+    this.consultQuestions();
   }
 
 }

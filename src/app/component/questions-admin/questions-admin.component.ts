@@ -20,7 +20,16 @@ export class QuestionsAdminComponent implements OnInit {
   cod_conjunto: any
   questions: any;
   validateResponse = true;
+  filterResponse: number = 1;
+  validateResult  = false;
   public page: number = 1;
+
+  filter_values = [
+    {id: 1, name:'Todas'},
+    {id: 2, name:'Respondidas'},
+    {id: 3, name:'Sin responder'},
+];
+
 
   ngOnInit(): void {
     this.username= this.authService.usuario.nombre;
@@ -31,19 +40,28 @@ export class QuestionsAdminComponent implements OnInit {
     
   }
 
+
   consultQuestionByEnsemble(){
 
     console.log("conjunto codigo",this.cod_conjunto);
     
-    this.questionService.getQuestionByensemble(this.token, this.cod_conjunto).subscribe((res:any)=>{
+    this.questionService.getQuestionByensemble(this.token, this.cod_conjunto, this.filterResponse).subscribe((res:any)=>{
       console.log(res);
+      console.log("mielda",this.questions);
+      
       if (!res.error) {
         this.questions = res;
         
         if(this.questions.length>0){
           this.validateResponse = false;
+          this.validateResult = false;
+        }else{
+          this.validateResult = true;
         }
 
+      }else{
+        console.log("hola");
+        this.questions = res;
         
       }
       
@@ -117,4 +135,15 @@ export class QuestionsAdminComponent implements OnInit {
     
     this.router.navigate([`view-response/${codigo_pregunta}`])
   }
+
+
+
+  selectFilter(value: any){
+    this.questions = null;
+    this.filterResponse = value;
+    this.consultQuestionByEnsemble();
+
+  }
+
+
 }
