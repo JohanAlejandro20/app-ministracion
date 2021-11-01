@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {map} from  'rxjs/operators'
 import Swal from 'sweetalert2';
@@ -14,19 +14,25 @@ export class QuestionService {
   constructor(private http: HttpClient, private router: Router, private authService: AuthUserService) { }
 
 
-  getQuestionsByUser(token: any, id_user: any) {
+  getQuestionsByUser(token: any, id_user: any, is_response: any, filter: any ) {
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
 
-    const url = `${environment.apiUrl}/api/buscar-preguntas-usuario?id=${id_user}`
+    const params = new HttpParams()
+      .set('id_usuario', id_user)
+      .set('is_response', is_response)
+      .set('filter', filter);
+
+
+    const url = `${environment.apiUrl}/api/buscar-preguntas-usuario`
 
     console.log(url);
     
 
-    return this.http.get(url,{headers:httpHeaders})
+    return this.http.get(url,{headers:httpHeaders,params})
 
   }
 
@@ -60,19 +66,24 @@ export class QuestionService {
 
   }
 
-  getQuestionByensemble(token: any, id_ensemble:any){
+  getQuestionByensemble(token: any, id_ensemble:any, filterResponse: any){
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
 
-    const url = `${environment.apiUrl}/api/buscar-preguntas-usuario-conjunto?id=${id_ensemble}`
+    let params = new HttpParams()
+    .set('id', id_ensemble)
+    .set('filterResponse',filterResponse )
+
+
+    const url = `${environment.apiUrl}/api/buscar-preguntas-usuario-conjunto`
 
     console.log(url);
     
 
-    return this.http.get(url,{headers:httpHeaders})
+    return this.http.get(url, {headers:httpHeaders, params})
 
   }
 
@@ -167,5 +178,27 @@ export class QuestionService {
     return this.http.get(url,{headers:httpHeaders})
 
   }
+
+
+  getFilterQuestions(token: any, id_user: any, is_response: boolean) {
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    const params = new HttpParams()
+      .set('id_usuario', id_user)
+      .set('is_response', is_response);
+
+    const url = `${environment.apiUrl}/api/filtrar-pregunta-usuario-by-respuesta`
+
+    console.log(url);
+    
+
+    return this.http.get(url,{headers:httpHeaders, params})
+
+  }
+
 
 }

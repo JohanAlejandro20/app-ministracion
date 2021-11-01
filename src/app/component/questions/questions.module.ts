@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AppRoutingModule} from './questions.routing.module';
 import {MatMenuModule} from '@angular/material/menu';
 import {NgxPaginationModule} from 'ngx-pagination'
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -37,7 +38,8 @@ import {NgxPaginationModule} from 'ngx-pagination'
     MatDialogModule,
     AppRoutingModule,
     MatMenuModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ],
   entryComponents:[AddQuestionComponent] 
 })

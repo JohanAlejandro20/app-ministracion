@@ -139,50 +139,6 @@ export class AuthUserService {
 
   }
 
-  public getQuestionById (id_question: any, token: any){
-
-    const httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
-
-    const url = `${environment.apiUrl}/api/buscar-preguntas-Byid?id=${id_question}`
-
-    console.log(url);
-    let request = {
-      nombre_pregunta: "",
-      descripcion_pregunta: "",
-      nombre_usuario: "",
-      telefono_usuario: "",
-      correo_usuario: "",
-      nombre_conjunto: "",
-    };
-
-
-
-    // return this.http.get(url,{headers:httpHeaders})
-
-
-    return this.http.get(url,{headers:httpHeaders}).pipe( map( (data: any) =>{
-
-      console.log(data);
-      
-
-        request.nombre_pregunta = data.nombre
-        request.descripcion_pregunta = data.descripcion
-        request.nombre_usuario  = data.usuario.nombre
-        request.telefono_usuario = data.usuario.telefono
-        request.correo_usuario = data.usuario.correo
-        request.nombre_conjunto = data.usuario.conjunto.nombre
-        // request2.nombre.rol= data.usuario.roles
-
-        return request;
-       
-    }));
-
-
-  }
-
   public logout(){
     this._usuario!=null;
     this._token = null;
