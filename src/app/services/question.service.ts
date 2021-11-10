@@ -66,7 +66,7 @@ export class QuestionService {
 
   }
 
-  getQuestionByensemble(token: any, id_ensemble:any, filterResponse: any){
+  getQuestionByensemble(token: any, id_ensemble:any, filterResponse: any,filter:any){
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -76,6 +76,8 @@ export class QuestionService {
     let params = new HttpParams()
     .set('id', id_ensemble)
     .set('filterResponse',filterResponse )
+    .set('filter',filter )
+    
 
 
     const url = `${environment.apiUrl}/api/buscar-preguntas-usuario-conjunto`

@@ -22,6 +22,7 @@ export class QuestionsAdminComponent implements OnInit {
   validateResponse = true;
   filterResponse: number = 1;
   validateResult  = false;
+  filter = "";
   public page: number = 1;
 
   filter_values = [
@@ -45,7 +46,7 @@ export class QuestionsAdminComponent implements OnInit {
 
     console.log("conjunto codigo",this.cod_conjunto);
     
-    this.questionService.getQuestionByensemble(this.token, this.cod_conjunto, this.filterResponse).subscribe((res:any)=>{
+    this.questionService.getQuestionByensemble(this.token, this.cod_conjunto, this.filterResponse,this.filter).subscribe((res:any)=>{
       console.log(res);
       console.log("mielda",this.questions);
       
