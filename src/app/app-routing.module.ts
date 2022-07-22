@@ -9,6 +9,7 @@ import { ResidentGuard } from './guard/resident.guard';
 import { ResponsesComponent } from './component/responses/responses.component';
 import { ViewResponseComponent } from './component/view-response/view-response.component';
 import { AdminResidentGuard } from './guard/admin-resident.guard';
+import { PorfileComponent } from './component/porfile/porfile.component';
 
 
 
@@ -39,6 +40,11 @@ const routes: Routes = [
   },
   {
     path: "view-response/:id_pregunta", component: ViewResponseComponent,
+    canActivate: [AdminResidentGuard]
+    
+  },
+  {
+    path: "profile", component: PorfileComponent,
     canActivate: [AdminResidentGuard]
     
   }

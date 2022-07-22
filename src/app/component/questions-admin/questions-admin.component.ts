@@ -81,6 +81,9 @@ export class QuestionsAdminComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/login']);
       }
+
+      Swal.fire('Error', "Ocurrio un error al consultar  las preguntas", 'error')
+
     })
 
   }
@@ -97,6 +100,8 @@ export class QuestionsAdminComponent implements OnInit {
          console.log(this.cod_conjunto);
          this.consultQuestionByEnsemble()
          
+        }else{
+          Swal.fire('Error', "Ocurrio un error al consultar el conunto", 'error')
         }
       
     },error=>{
@@ -144,6 +149,11 @@ export class QuestionsAdminComponent implements OnInit {
     this.filterResponse = value;
     this.consultQuestionByEnsemble();
 
+  }
+
+
+  profile(){
+    this.router.navigate(["/profile"])
   }
 
 

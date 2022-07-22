@@ -11,6 +11,8 @@ class  usuario {
   correo!: string;
   username!:string;
   roles:any;
+  creacion:Date | undefined;
+  estado:any;
 }
  
 
@@ -62,7 +64,7 @@ export class AuthUserService {
   public saveUser(access_token: string): void{
 
       let payLoad = this.getDataToken(access_token);
-      console.log(payLoad.nombre);
+      console.log(payLoad);
       
       this._usuario = new usuario();
 
@@ -72,6 +74,8 @@ export class AuthUserService {
       this._usuario.correo = payLoad.correo; 
       this._usuario.username = payLoad.user_name;
       this._usuario.roles = payLoad.authorities;
+      this._usuario.estado = payLoad.Estado == true? 'Activado': 'Desactivado';
+      this._usuario.creacion = payLoad.Fecha_creacion;
 
       sessionStorage.setItem("Usuario", JSON.stringify(this._usuario));
 
@@ -147,5 +151,22 @@ export class AuthUserService {
     sessionStorage.removeItem("Usuario")
 
   }
+
+
+
+  public updateUser(request: any,token:any){
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    const url = `${environment.apiUrl}/api/actualizar-usuario`;
+
+    return this.http.put(url, request, {headers:httpHeaders})
+
+
+  }
+
 
 }

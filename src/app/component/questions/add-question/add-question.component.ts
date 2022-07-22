@@ -42,6 +42,8 @@ export class AddQuestionComponent implements OnInit {
         
          this.ensemble = res.nombre_conjunto;
          this.form.get("ensemble")?.setValue(this.ensemble);
+      }else{
+        Swal.fire('Error', "Ocurrio un error al consultar el conjunto ", 'error')
       }
         
       
@@ -92,6 +94,8 @@ export class AddQuestionComponent implements OnInit {
       if(!res.error){
         Swal.fire('Pregunta', `Pregunta agregada correctamente`, 'success')
         createQuestion = true;
+      }else{
+        Swal.fire('Error', "Ocurrio un error al crear la pregunta", 'error')
       }
       
     }, error =>{
@@ -107,6 +111,7 @@ export class AddQuestionComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/question']);
       }
+      Swal.fire('Error', "Ocurrio un error al crear la pregunta", 'error')
     });
 
     this.dialogRef.close(createQuestion);

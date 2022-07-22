@@ -1,0 +1,150 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #192e67">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../../assets/images/appmin.png" alt="app-ministracion" width="200px">
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" style="color: white;" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link" style="color: white;" href="#">Solicitudes</a>
+                <a class="nav-link" style="color: white;" href="#">Noticias</a>
+                <a class="nav-link" style="color: white;" [routerLink]="['/questions']">Preguntas</a>
+            </div>
+        </div>
+
+        <div>
+            <button mat-button [matMenuTriggerFor]="menu" style="color: white;">{{username}} <i class="fa fa-user"
+                    style="color: white;"></i></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">Cerrar sesion</button>
+            </mat-menu>
+
+
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row text-center mt-5">
+            <div class="col-md-12" style="font-size: 22px;">
+                <p style="color: #192e67;">Perfil</p>
+            </div>
+
+
+            <div class="col-md-12">
+                <p>Datos personales</p>
+            </div>
+        </div>
+
+        <div class="raw row justify-content-md-center mt-5">
+
+            <div class="col-md-5 mt-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="name" matInput placeholder="Nombre y apellido">
+                    <mat-error *ngIf="form.get('name')?.invalid">Nombre Invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+            <div class="col-md-5 mt-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Conjunto</mat-label>
+                    <input formControlName="ensemble" matInput placeholder="Nombre y apellido">
+                    <mat-error *ngIf="form.get('ensemble')?.invalid">Conjunto Invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-5">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Telefono</mat-label>
+                    <input formControlName="phone" matInput placeholder="Telefono">
+                    <mat-error *ngIf="form.get('phone')?.invalid">Telefono Invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-5">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input formControlName="email" matInput placeholder="Correo">
+                    <mat-error *ngIf="form.get('email')?.invalid">Correo Invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-10">
+                <mat-checkbox class="example-margin" (change)="validPassword($event)"  formControlName="changePassword">Cambiar contraseña</mat-checkbox>
+            </div>
+
+
+
+            <div class="row" style="margin-left: 180px;" *ngIf="form.get('changePassword')?.value" >
+                <div class="col-md-5" >
+                    <mat-form-field class="example-full-width2" appearance="outline">
+                        <mat-label>Nueva contraseña</mat-label>
+                        <input type="password" formControlName="newPassword" matInput placeholder="Correo">
+                        <mat-error *ngIf="form.get('newPassword')?.invalid">Contraseña invalida</mat-error>
+
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-5" style="margin-left: 10px;">
+                    <mat-form-field class="example-full-width2" appearance="outline">
+                        <mat-label>Confirmar contraseña</mat-label>
+                        <input type="password" formControlName="confirmPassword" matInput placeholder="Correo">
+                        <mat-error *ngIf="form.get('confirmPassword')?.invalid">Las contraseñas no coinciden</mat-error>
+
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input formControlName="statusActivate" matInput placeholder="Correo">
+                    <mat-error *ngIf="form.get('statusActivate')?.invalid">Estado invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-5">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Fecha de creacion</mat-label>
+                    <input formControlName="createdAt" matInput placeholder="Correo">
+                    <mat-error *ngIf="form.get('createdAt')?.invalid">Fecha de creacion Invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-10">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Rol</mat-label>
+                    <input formControlName="Role" matInput placeholder="Rol">
+                    <mat-error *ngIf="form.get('Role')?.invalid">Rol Invalido</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3 text-center mt-5">
+                <button mat-raised-button color="primary"  [disabled] ="form.invalid">Actualizar datos</button>
+            </div>
+
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <button type="button" mat-raised-button color="primary" (click) ="backTo()"> <i class="fa fa-arrow-left"></i>
+                        Volver
+                    </button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+</div>

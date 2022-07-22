@@ -81,6 +81,9 @@ export class ViewResponseComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/question']);
       }
+
+      Swal.fire('Error', "Ocurrio un error al consultar la pregunta", 'error')
+
     });
   }
 
@@ -118,6 +121,9 @@ export class ViewResponseComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/question']);
       }
+
+      Swal.fire('Error', "Ocurrio un error al consultar la respuesta", 'error')
+
     });
 
   }
@@ -137,6 +143,11 @@ export class ViewResponseComponent implements OnInit {
       
     }
 
+  }
+
+
+  profile(){
+    this.router.navigate(["/profile"])
   }
 
 }
