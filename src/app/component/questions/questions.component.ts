@@ -59,12 +59,18 @@ export class QuestionsComponent implements OnInit {
 
   }
 
+  profile(){
+    this.router.navigate(["/profile"])
+  }
+
   consultEnsemble(){
 
 
     this.questionService.getEnsembleByUser(this.token, this.id_user).subscribe((res: any) =>{
       if (!res.error) {
          this.ensemble = res.nombre_conjunto
+        }else{
+          Swal.fire('Error', "Ocurrio un error al consultar el conjunto ", 'error')
         }
       
     },error=>{
@@ -101,8 +107,11 @@ export class QuestionsComponent implements OnInit {
         }
 
         
+      }else{
+        Swal.fire('Error', "Ocurrio un error al consultar la pregunta ", 'error')
       }
     }, error => {
+      
       console.log(error);
 
       if (error.status == 401) {
@@ -118,6 +127,7 @@ export class QuestionsComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/login']);
       }
+      Swal.fire('Error', "Ocurrio un error al consultar la pregunta", 'error')
 
     })
 

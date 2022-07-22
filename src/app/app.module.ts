@@ -23,7 +23,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ResponsesComponent } from './component/responses/responses.component';
-import { ViewResponseComponent } from './component/view-response/view-response.component'
+import { ViewResponseComponent } from './component/view-response/view-response.component';
+import { PorfileComponent } from './component/porfile/porfile.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DatePipe } from '@angular/common';
+
 
 
 // import { AddQuestionComponent } from './component/questions/add-question/add-question.component';
@@ -38,6 +42,7 @@ import { ViewResponseComponent } from './component/view-response/view-response.c
     QuestionsAdminComponent,
     ResponsesComponent,
     ViewResponseComponent,
+    PorfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,10 +62,11 @@ import { ViewResponseComponent } from './component/view-response/view-response.c
     HttpClientModule,
     MatSelectModule,
     MatMenuModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatCheckboxModule
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -127,7 +127,8 @@ export class ResponsesComponent implements OnInit {
       if(!res.error){
         Swal.fire('Pregunta',`Pregunta respondida correctamente` , 'success')
         this.router.navigate(['/questions-admin'])
-        
+      }else{
+        Swal.fire('Error', "Ocurrio un error al responder la pregunta", 'error')
       }
     }, error =>{
       if (error.status == 401) {
@@ -142,7 +143,15 @@ export class ResponsesComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/question']);
       }
+
+      Swal.fire('Error', "Ocurrio un error al responder la pregunta", 'error')
+
     })
+  }
+
+
+  profile(){
+    this.router.navigate(["/profile"])
   }
 
 }

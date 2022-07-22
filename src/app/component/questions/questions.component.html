@@ -17,9 +17,8 @@
         <button mat-button [matMenuTriggerFor]="menu" style="color: white;"> <i class="fa fa-user" style="color: white;"></i> {{username}}</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="logout()">Cerrar sesion</button>
-        </mat-menu>
-        
-        
+          <button mat-menu-item (click)="profile()">Ver Perfil</button>
+        </mat-menu>        
       </div>
 
     </div>
